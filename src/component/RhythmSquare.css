@@ -1,0 +1,17 @@
+.allbuttons {
+    border: 1px solid black;
+    padding: 10px
+}
+
+.allbuttons:hover {
+  filter: brightness(150%);
+}
+
+.rest {
+  background-color: darkgray;
+}
+
+
+.activated {
+  background-color: green;
+}
