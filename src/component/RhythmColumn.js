@@ -26,7 +26,7 @@ class RhythmColumn extends React.Component{
   }
 
   playall(){
-      console.log(this.button_states)
+    console.log(this.button_states)
     for (var i = 0; i < 6; i++){
         if (this.button_states[i]){
             this.buttons[i].props.sound.play()
@@ -43,8 +43,8 @@ class RhythmColumn extends React.Component{
   }
 
   updatebutton(rownum){
-      this.button_states[rownum] ^= 1
-      
+    this.button_states[rownum] ^= 1
+    this.props.updatebutton(this.props.colnum, rownum)
   }
 }
 

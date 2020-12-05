@@ -1,0 +1,16 @@
+.play {
+    background-color: green;
+}
+
+
+.allcol{
+    float: left;
+}
+.colrest {
+    background-color: brown;
+    padding: 10px;
+}
+.colact {
+    background-color: blue;
+    padding: 10px;
+}
