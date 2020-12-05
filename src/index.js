@@ -1,16 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './component/App';
-import RhythmSquare from './component/RhythmSquare';
 
-import ccc from './component/ccc.wav'
-import ccd from './component/ccd.wav'
-import cce from './component/cce.wav'
-import ccf from './component/ccf.wav'
-import ccg from './component/ccg.wav'
-import cch from './component/cch.wav'
-import RhythmColumn from './component/RhythmColumn';
+import './index.css';
 import RhythmPanel from './component/RhythmPanel';
 
 ReactDOM.render(
