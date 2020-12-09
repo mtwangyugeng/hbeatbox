@@ -1,50 +1,46 @@
-import './RhythmColumn.css';
 import React from 'react';
+import PropTypes from "prop-types";
+
 import RhythmSquare from './RhythmSquare';
+import './RhythmColumn.css';
+import ccc from './ccc.wav'
+import ccd from './ccd.wav'
+import cce from './cce.wav'
+import ccf from './ccf.wav'
+import ccg from './ccg.wav'
+import cch from './cch.wav'
 
 class RhythmColumn extends React.Component{
-  constructor(props){
-    super(props);
-    //props.colnum
-    this.state = {
-        sounds: this.props.sounds,
-        activated: this.props.activated
-    }
-    this.playall = this.playall.bind(this)
-    this.updatebutton = this.updatebutton.bind(this)
-
-    this.buttons = this._butts()
-    this.button_states = [0,0,0,0,0,0]
+  //CONST
+  static propTypes = {
+    colnum: PropTypes.number,
+    act_col: PropTypes.number
+  };
+  static cssstates =  ["colrest", "colact"]
+  static sounds = [new Audio(ccc), new Audio(ccd), new Audio(cce), new Audio(ccf), new Audio(ccg), new Audio(cch)]
+  //VAR
+  state = {
+    activated: 0
   }
+
   render() {
     return ( 
-      <div className = {"weiwang"}>
-          {this.buttons}
-          <button onClick = {this.playall}>{this.props.speedo}</button>
+      <div className = {"allcol " + RhythmColumn.cssstates[this.state.activated || (this.props.act_col === this.props.colnum)?1:0]}>
+          {
+            RhythmColumn.sounds.map((v) =>
+              <RhythmSquare activated= {this.state.activated || (this.props.act_col === this.props.colnum)?1:0 } sound = {v}></RhythmSquare>
+            )
+          }
+          <button onClick = {this.updateState}>{this.props.act_col}</button>
       </div >
     );
   }
 
-  playall(){
-    console.log(this.button_states)
-    for (var i = 0; i < 6; i++){
-        if (this.button_states[i]){
-            this.buttons[i].props.sound.play()
-        }
-    }
-  }
 
-  _butts() {
-    var finale = []
-    for (var i = 0; i < 6; i++){
-      finale.push(<RhythmSquare rownum = {i} bf = {this.updatebutton} activated= {0} sound = {this.state.sounds[i]}></RhythmSquare>)
-    }
-    return finale
-  }
-
-  updatebutton(rownum){
-    this.button_states[rownum] ^= 1
-    this.props.updatebutton(this.props.colnum, rownum)
+  updateState = () => {
+    this.setState({
+      activated: this.state.activated ^ 1
+    })
   }
 }
 

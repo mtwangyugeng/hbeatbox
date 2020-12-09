@@ -2,38 +2,19 @@ import React from 'react';
 
 import './RhythmPanel.css';
 import RhythmColumn from './RhythmColumn';
-import ccc from './ccc.wav'
-import ccd from './ccd.wav'
-import cce from './cce.wav'
-import ccf from './ccf.wav'
-import ccg from './ccg.wav'
-import cch from './cch.wav'
 
 class RhythmPanel extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      speedo: 500,
-      col_states: ["colrest", "colrest", "colrest", "colrest", "colrest", "colrest", "colrest", "colrest", 
-        "colrest", "colrest", "colrest", "colrest", "colrest", "colrest", "colrest", "colrest"]
-    }
-    this.intervals = null;
-    this.isplaying = false;
-
-    this.prev_col = 15
-    this.curr_col = 0
-    
-    this.numc = 16
-
-    this.sounds = [new Audio(ccc), new Audio(ccd), new Audio(cce), new Audio(ccf), new Audio(ccg), new Audio(cch)]
-    this.button_states = [[0,0,0,0,0,0], [0,0,0,0,0,0], [0,0,0,0,0,0],
-                          [0,0,0,0,0,0], [0,0,0,0,0,0], [0,0,0,0,0,0],
-                          [0,0,0,0,0,0], [0,0,0,0,0,0], [0,0,0,0,0,0],
-                          [0,0,0,0,0,0], [0,0,0,0,0,0], [0,0,0,0,0,0], 
-                          [0,0,0,0,0,0], [0,0,0,0,0,0], [0,0,0,0,0,0],
-                          [0,0,0,0,0,0], [0,0,0,0,0,0]
-                        ]
+  // CONST
+  static panel_buttons = ["play", "pause", "stop", "faster", "slower"]
+  static col_starter = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  //VAR
+  state = {
+    speedo: 500,
+    act_col: -1
   }
+  intervals = null;
+  isplaying = false;
+
   render() {
     return ( 
       <div className = {"panel"}>
@@ -46,20 +27,21 @@ class RhythmPanel extends React.Component{
             <div>{this.state.speedo}</div>
           </div>
           {
-            (this.state.col_states).map( (v,i) =>
-              <div className = {this.state.col_states[i] + " allcol"}>
-                <RhythmColumn 
-                    speedo = {this.state.speedo}
-                    colnum = {i}
-                    cnt = {0}
-                    sounds = {this.sounds}
-                    updatebutton = {this.updatebutton}
+            (RhythmPanel.col_starter).map((v) =>
+                <RhythmColumn
+                  colnum = {v}
+                  act_col = {this.state.act_col}
                 ></RhythmColumn>
-              </div>
             )
           }
       </div >
     );
+  }
+
+  play_col_test = () =>{
+    this.setState({
+      act_col: (this.state.act_col + 1) % 16
+    })
   }
 
   play_g = () => {
@@ -74,11 +56,8 @@ class RhythmPanel extends React.Component{
     clearInterval(this.intervals)
     this.isplaying = false;
 
-    this.curr_col = 0
-    var tt = this.state.col_states;
-    tt[this.prev_col] = "colrest";
     this.setState({
-      col_states: tt
+      act_col: -1
     })
   }
 
@@ -100,31 +79,6 @@ class RhythmPanel extends React.Component{
       clearInterval(this.intervals)
       this.intervals = setInterval(this.play_col_test,this.state.speedo)
     }
-  }
-
-  play_col_test = () =>{
-    var tt = this.state.col_states;
-    tt[this.curr_col] = "colact";
-    tt[this.prev_col] = "colrest";
-    console.log(tt)
-    this.setState({
-      col_states: tt
-    })
-
-    console.log(this.button_states)
-    var t = this.button_states[this.curr_col]
-    for (var i = 0; i < 6; i++){
-        if (t[i]){
-            this.sounds[i].play()
-        }
-    }
-
-    this.prev_col = this.curr_col
-    this.curr_col = (this.curr_col + 1) % 16
-  }
-
-  updatebutton = (colnum, rownum) => {
-      this.button_states[colnum][rownum] ^= 1
   }
 
 }

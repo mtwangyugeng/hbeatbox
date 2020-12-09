@@ -12,14 +12,3 @@
     display: flex;
     flex-direction: column;
 }
-
-.allcol{
-
-}
-.colrest {
-    background-color: brown;
-
-}
-.colact {
-    background-color: blue;
-}

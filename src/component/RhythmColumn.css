@@ -1,3 +1,11 @@
-.weiwang{
+.allcol{
+    padding: 1px
+}
 
+.colrest{
+    background-color: blue;
+}
+
+.colact{
+    background-color: brown;
 }
