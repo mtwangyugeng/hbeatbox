@@ -1,5 +1,23 @@
 .allcol{
-    padding: 1px
+    border: 1px solid black;
+    width: 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.testcol{
+    background-color: white;
+    border-radius: 50%;
+    height: 12%;
+    width: 80%;
+}
+.testcol:hover{
+    background-color: black;
+}
+.testcol:active{
+    background-color: white;
 }
 
 .colrest{

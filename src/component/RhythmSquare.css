@@ -1,6 +1,8 @@
 .allbuttons {
     border: 1px solid black;
-    padding: 10px;
+    height: 12%;
+    width: 80%;
+    border-radius: 20%;
 }
 
 .allbuttons:hover {

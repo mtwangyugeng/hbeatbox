@@ -1,14 +1,15 @@
 .panel {
     background-color:red;
     display: flex;
-    margin: auto;
 
+    height: 30vw;
     /* TODO: testing */
-    flex-wrap: wrap;
-    height: 100%;
+    justify-content: center;
+
 }
 
 .button-container{
+    background-color:yellow;
     display: flex;
     flex-direction: column;
 }
