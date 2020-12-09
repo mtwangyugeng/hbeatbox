@@ -36,17 +36,20 @@ class RhythmPanel extends React.Component{
   }
   render() {
     return ( 
-      <div className = {"play"}>
-          <button onClick = {this.play_g}>test play</button>
-          <button onClick = {this.pause_g}>test pause</button>
-          <button onClick = {this.stop_g}>test stop</button>
-          <button onClick = {this.faster_g}>test faster</button>
-          <button onClick = {this.slower_g}>test slower</button>
-          <div>{this.state.speedo}</div>
+      <div className = {"panel"}>
+          <div className = {"button-container"}>
+            <button onClick = {this.play_g}>test play</button>
+            <button onClick = {this.pause_g}>test pause</button>
+            <button onClick = {this.stop_g}>test stop</button>
+            <button onClick = {this.faster_g}>test faster</button>
+            <button onClick = {this.slower_g}>test slower</button>
+            <div>{this.state.speedo}</div>
+          </div>
           {
             (this.state.col_states).map( (v,i) =>
               <div className = {this.state.col_states[i] + " allcol"}>
                 <RhythmColumn 
+                    speedo = {this.state.speedo}
                     colnum = {i}
                     cnt = {0}
                     sounds = {this.sounds}

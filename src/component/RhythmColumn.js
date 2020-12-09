@@ -20,7 +20,7 @@ class RhythmColumn extends React.Component{
     return ( 
       <div className = {"weiwang"}>
           {this.buttons}
-          <button onClick = {this.playall}>test play all</button>
+          <button onClick = {this.playall}>{this.props.speedo}</button>
       </div >
     );
   }

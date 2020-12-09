@@ -1,16 +1,25 @@
-.play {
-    background-color: green;
+.panel {
+    background-color:red;
+    display: flex;
+    margin: auto;
+
+    /* TODO: testing */
+    flex-wrap: wrap;
+    height: 100%;
 }
 
+.button-container{
+    display: flex;
+    flex-direction: column;
+}
 
 .allcol{
-    float: left;
+
 }
 .colrest {
     background-color: brown;
-    padding: 10px;
+
 }
 .colact {
     background-color: blue;
-    padding: 10px;
 }
