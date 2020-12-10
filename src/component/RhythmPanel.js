@@ -38,6 +38,11 @@ class RhythmPanel extends React.Component{
     );
   }
 
+  updateButton = (col, row) => {
+    
+  }
+
+
   play_col_test = () =>{
     this.setState({
       act_col: (this.state.act_col + 1) % 16
