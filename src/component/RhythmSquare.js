@@ -7,13 +7,14 @@ export default class RhythmSquare extends React.Component{
   //consts
   static propTypes = {
     activated: PropTypes.number,
+    clear: PropTypes.number,
   };
   static cssStates= ["rest", "activated"]
 
   // Var
   state = {
     activated: 0,
-    sound: this.props.sound,
+    sound: this.props.sound
   }
 
   render() {
@@ -25,9 +26,19 @@ export default class RhythmSquare extends React.Component{
         {this.props.activated}
         {/* testing */}
         {this.player()}
+        {this.cleaner()}
       </div >
       );
   }
+
+  cleaner = () => {
+    if(this.props.clear && this.state.activated){
+      this.setState({
+        activated: 0
+      })
+    }
+  }
+
   player = () => {
     if((this.props.activated) && this.state.activated)
       this.state.sound.play()

@@ -14,7 +14,8 @@ class RhythmColumn extends React.Component{
   //CONST
   static propTypes = {
     colnum: PropTypes.number,
-    act_col: PropTypes.number
+    act_col: PropTypes.number,
+    clear: PropTypes.number
   };
   static cssstates =  ["colrest", "colact"]
   static sounds = [new Audio(ccc), new Audio(ccd), new Audio(cce), new Audio(ccf), new Audio(ccg), new Audio(cch)]
@@ -28,7 +29,7 @@ class RhythmColumn extends React.Component{
       <div className = {"allcol " + RhythmColumn.cssstates[this.state.activated || (this.props.act_col === this.props.colnum)?1:0]}>
           {
             RhythmColumn.sounds.map((v) =>
-              <RhythmSquare activated= {this.state.activated || (this.props.act_col === this.props.colnum)?1:0 } sound = {v}></RhythmSquare>
+              <RhythmSquare activated= {this.state.activated || (this.props.act_col === this.props.colnum)?1:0 } sound = {v} clear = {this.props.clear}></RhythmSquare>
             )
           }
           <div className = {"testcol"} onClick = {this.updateState}>{this.props.act_col}</div>

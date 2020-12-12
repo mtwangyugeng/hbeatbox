@@ -10,7 +10,8 @@ class RhythmPanel extends React.Component{
   //VAR
   state = {
     speedo: 500,
-    act_col: -1
+    act_col: -1,
+    clear: false
   }
   intervals = null;
   isplaying = false;
@@ -22,6 +23,7 @@ class RhythmPanel extends React.Component{
             <button onClick = {this.play_g}>test play</button>
             <button onClick = {this.pause_g}>test pause</button>
             <button onClick = {this.stop_g}>test stop</button>
+            <button onClick = {this.clear_g}>test clear</button>
             <button onClick = {this.faster_g}>test faster</button>
             <button onClick = {this.slower_g}>test slower</button>
             <div>{this.state.speedo}</div>
@@ -31,12 +33,30 @@ class RhythmPanel extends React.Component{
                 <RhythmColumn
                   colnum = {v}
                   act_col = {this.state.act_col}
+                  clear = {this.state.clear}
                 ></RhythmColumn>
             )
           }
       </div >
     );
   }
+
+  componentDidUpdate(){
+    //MARK: clear_g
+    if(this.state.clear){
+      this.setState({
+        clear: false
+      })
+    }
+  }
+
+  clear_g = () => {
+    // MARK: componentDidUpdate
+    this.setState({
+      clear: true
+    })
+  }
+
 
   play_col_test = () =>{
     this.setState({
