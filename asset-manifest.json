@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/hbeatbox/static/css/main.1d94d678.chunk.css",
+    "main.js": "/hbeatbox/static/js/main.4780df83.chunk.js",
+    "main.js.map": "/hbeatbox/static/js/main.4780df83.chunk.js.map",
+    "runtime-main.js": "/hbeatbox/static/js/runtime-main.388af218.js",
+    "runtime-main.js.map": "/hbeatbox/static/js/runtime-main.388af218.js.map",
+    "static/js/2.6ad69abf.chunk.js": "/hbeatbox/static/js/2.6ad69abf.chunk.js",
+    "static/js/2.6ad69abf.chunk.js.map": "/hbeatbox/static/js/2.6ad69abf.chunk.js.map",
+    "index.html": "/hbeatbox/index.html",
+    "static/css/main.1d94d678.chunk.css.map": "/hbeatbox/static/css/main.1d94d678.chunk.css.map",
+    "static/js/2.6ad69abf.chunk.js.LICENSE.txt": "/hbeatbox/static/js/2.6ad69abf.chunk.js.LICENSE.txt",
+    "static/media/ccc.595e2854.wav": "/hbeatbox/static/media/ccc.595e2854.wav",
+    "static/media/ccd.7ec7142f.wav": "/hbeatbox/static/media/ccd.7ec7142f.wav",
+    "static/media/cce.49e90834.wav": "/hbeatbox/static/media/cce.49e90834.wav",
+    "static/media/ccf.beb2075e.wav": "/hbeatbox/static/media/ccf.beb2075e.wav",
+    "static/media/ccg.b4e6a17c.wav": "/hbeatbox/static/media/ccg.b4e6a17c.wav",
+    "static/media/cch.b5a530be.wav": "/hbeatbox/static/media/cch.b5a530be.wav"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.388af218.js",
+    "static/js/2.6ad69abf.chunk.js",
+    "static/css/main.1d94d678.chunk.css",
+    "static/js/main.4780df83.chunk.js"
+  ]
+}
