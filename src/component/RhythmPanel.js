@@ -2,6 +2,7 @@ import React from 'react';
 
 import './RhythmPanel.css';
 import RhythmColumn from './RhythmColumn';
+import RhythmSquare from './RhythmSquare';
 
 class RhythmPanel extends React.Component{
   // CONST
@@ -11,7 +12,10 @@ class RhythmPanel extends React.Component{
   state = {
     speedo: 500,
     act_col: -1,
-    clear: false
+
+    clear: false,
+    save_s: false,
+    download_s: false
   }
   intervals = null;
   isplaying = false;
@@ -26,6 +30,8 @@ class RhythmPanel extends React.Component{
             <button onClick = {this.clear_g}>test clear</button>
             <button onClick = {this.faster_g}>test faster</button>
             <button onClick = {this.slower_g}>test slower</button>
+            <button onClick = {this.save_g}>test save</button>
+            <button onClick = {this.load_g}>test load</button>
             <div>{this.state.speedo}</div>
           </div>
           {
@@ -34,13 +40,16 @@ class RhythmPanel extends React.Component{
                   colnum = {v}
                   act_col = {this.state.act_col}
                   clear = {this.state.clear}
+                  save_s = {this.state.save_s}
+                  download_s = {this.state.download_s}
                 ></RhythmColumn>
             )
           }
+          
       </div >
     );
   }
-
+  
   componentDidUpdate(){
     //MARK: clear_g
     if(this.state.clear){
@@ -48,6 +57,25 @@ class RhythmPanel extends React.Component{
         clear: false
       })
     }
+
+    if(this.state.save_s){
+      this.setState({
+        save_s: false,
+        download_s: true
+      })
+      RhythmSquare.download_ready = true
+    }
+  }
+
+  save_g = () => {
+    RhythmSquare.records = []
+    this.setState({
+      save_s: true
+    })
+  }
+
+  load_g = () => {
+    
   }
 
   clear_g = () => {
