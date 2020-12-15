@@ -14,8 +14,12 @@ class RhythmPanel extends React.Component{
     act_col: -1,
 
     clear: false,
+    
     save_s: false,
-    download_s: false
+    download_s: false,
+
+    load_s: false,
+    loadfile_s: false
   }
   intervals = null;
   isplaying = false;
@@ -32,6 +36,7 @@ class RhythmPanel extends React.Component{
             <button onClick = {this.slower_g}>test slower</button>
             <button onClick = {this.save_g}>test save</button>
             <button onClick = {this.load_g}>test load</button>
+            {this.state.load_s ? <div><input type="file" name="file" onChange={this.onChangeHandler}/> <button onClick = {this.upload_g}>test upload</button> </div> : <div/>}
             <div>{this.state.speedo}</div>
           </div>
           {
@@ -42,6 +47,7 @@ class RhythmPanel extends React.Component{
                   clear = {this.state.clear}
                   save_s = {this.state.save_s}
                   download_s = {this.state.download_s}
+                  loadfile_s = {this.state.loadfile_s}
                 ></RhythmColumn>
             )
           }
@@ -50,7 +56,19 @@ class RhythmPanel extends React.Component{
     );
   }
   
+  onChangeHandler=event=>{
+    const t = event.target.files[0]
+    const reader = new FileReader();
+    reader.addEventListener('load', (event) => {
+      const result = event.target.result;
+      RhythmSquare.selected_file = JSON.parse(result).active
+    });
+    reader.readAsText(t);
+    
+  }
+
   componentDidUpdate(){
+
     //MARK: clear_g
     if(this.state.clear){
       this.setState({
@@ -65,6 +83,23 @@ class RhythmPanel extends React.Component{
       })
       RhythmSquare.download_ready = true
     }
+
+    if(this.state.loadfile_s){
+      console.log("loadfile finish")
+      this.setState({
+        loadfile_s: false,
+      })
+    }
+
+
+  }
+
+  upload_g = () => {
+    if(RhythmSquare.selected_file){
+      this.setState({
+        loadfile_s: true
+      })
+    }
   }
 
   save_g = () => {
@@ -75,7 +110,9 @@ class RhythmPanel extends React.Component{
   }
 
   load_g = () => {
-    
+    this.setState({
+      load_s: this.state.load_s ^ 1
+    })
   }
 
   clear_g = () => {

@@ -12,10 +12,11 @@ export default class RhythmSquare extends React.Component{
     activated: PropTypes.number,
     clear: PropTypes.bool,
     save_s: PropTypes.bool,
+    download_s: PropTypes.bool,
   };
   static cssStates = ["rest", "activated"]
   static records = []
-  
+  static selected_file = null
 
   // Var
   state = {
@@ -35,14 +36,30 @@ export default class RhythmSquare extends React.Component{
         {this.cleaner()}
         {this.saver()}
         {this.downloader()}
+        {this.loader()}
       </div >
       );
+  }
+
+  loader = () => {
+    if(this.props.loadfile_s){
+      if(RhythmSquare.selected_file.includes("c"+ this.props.colnum + "r" + this.props.rownum)){
+        console.log("asdad")
+        this.setState({
+          activated: 1
+        })
+      } else{
+        this.setState({
+          activated: 0
+        })
+      }
+    }
   }
 
   saver = () => {
     if(this.props.save_s && this.state.activated){
       console.log("before", RhythmSquare.records)
-      RhythmSquare.records.push([this.props.colnum, this.props.rownum])
+      RhythmSquare.records.push("c"+ this.props.colnum + "r" + this.props.rownum)
       
     }
   }
@@ -63,7 +80,8 @@ export default class RhythmSquare extends React.Component{
     if(this.props.download_s && RhythmSquare.download_ready){
       RhythmSquare.download_ready = false
       console.log("after: ", RhythmSquare.records)
-      RhythmSquare.downloadToFile(RhythmSquare.records, 'my-new-file.json', 'text/plain');
+      var d = {"active" : RhythmSquare.records}
+      RhythmSquare.downloadToFile(d, 'my-new-file.json', 'text/plain');
     }
   } 
 

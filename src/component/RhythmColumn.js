@@ -31,7 +31,8 @@ class RhythmColumn extends React.Component{
           {
             RhythmColumn.sounds.map((v, i) =>
               <RhythmSquare colnum = {this.props.colnum} rownum = {i} activated= {this.state.activated || (this.props.act_col === this.props.colnum)?1:0 } sound = {v} clear = {this.props.clear} save_s = {this.props.save_s} 
-                download_s = {this.props.download_s}></RhythmSquare>
+                download_s = {this.props.download_s}
+                loadfile_s = {this.props.loadfile_s}></RhythmSquare>
             )
           }
           <div className = {"testcol"} onClick = {this.updateState}>{this.props.act_col}</div>
