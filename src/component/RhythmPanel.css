@@ -1,7 +1,7 @@
 .panel {
     background-color:red;
     display: flex;
-    width: 80%;
+    width: 100%;
     height: 30vw;
     /* TODO: testing */
     justify-content: center;
@@ -9,8 +9,18 @@
 }
 
 .button-container{
-    background-color:yellow;
     display: flex;
     flex-direction: column;
+    width: 25%;
 }
 
+.panel-buttons {
+    display: flex;
+    height: 33%;
+}
+
+.button-boss {
+    display: flex;
+    background-color:yellow;
+    height: 30vw;
+}

@@ -4,6 +4,7 @@ import './RhythmPanel.css';
 import RhythmColumn from './RhythmColumn';
 import RhythmSquare from './RhythmSquare';
 import SpeedChanger from './SpeedChanger'
+import RhythmVisualizer from './RhythmVisualizer';
 
 class RhythmPanel extends React.Component{
   // CONST
@@ -27,17 +28,22 @@ class RhythmPanel extends React.Component{
 
   render() {
     return ( 
-      <div className = {"panel"}>
-          <div className = {"button-container"}>
-          <SpeedChanger faster_g = {this.faster_g} slower_g = {this.slower_g} speedo = {this.state.speedo}></SpeedChanger>
-            <button onClick = {this.play_g}>test play</button>
-            <button onClick = {this.pause_g}>test pause</button>
-            <button onClick = {this.stop_g}>test stop</button>
-            <button onClick = {this.clear_g}>test clear</button>
-            <button onClick = {this.save_g}>test save</button>
-            <button onClick = {this.load_g}>test load</button>
-            {this.state.load_s ? <div><input type="file" name="file" onChange={this.onChangeHandler}/> <button onClick = {this.upload_g}>test upload</button> </div> : <div/>}
-          </div>
+      <div >
+            <div className = {"button-boss"}>
+              <div className = {"button-container"}>
+                <button className = {"panel-buttons"} onClick = {this.play_g}>test play</button>
+                <button className = {"panel-buttons"} onClick = {this.pause_g}>test pause</button>
+                <button className = {"panel-buttons"} onClick = {this.stop_g}>test stop</button>
+              </div>
+              <div className = {"button-container"}>
+                <button className = {"panel-buttons"} onClick = {this.clear_g}>test clear</button>
+                <button className = {"panel-buttons"} onClick = {this.save_g}>test save</button>
+                <button className = {"panel-buttons"} onClick = {this.load_g}>test load</button>
+                {this.state.load_s ? <div><input type="file" name="file" onChange={this.onChangeHandler}/> <button onClick = {this.upload_g}>test upload</button> </div> : <div/>}
+              </div>
+              <RhythmVisualizer></RhythmVisualizer>
+            </div>
+          <div className = {"panel"}>
           {
             (RhythmPanel.col_starter).map((v) =>
                 <RhythmColumn
@@ -50,7 +56,8 @@ class RhythmPanel extends React.Component{
                 ></RhythmColumn>
             )
           }
-          
+          </div>
+          <SpeedChanger faster_g = {this.faster_g} slower_g = {this.slower_g} speedo = {this.state.speedo}></SpeedChanger>
       </div >
     );
   }
