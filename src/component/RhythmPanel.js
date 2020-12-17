@@ -3,6 +3,7 @@ import React from 'react';
 import './RhythmPanel.css';
 import RhythmColumn from './RhythmColumn';
 import RhythmSquare from './RhythmSquare';
+import SpeedChanger from './SpeedChanger'
 
 class RhythmPanel extends React.Component{
   // CONST
@@ -28,16 +29,14 @@ class RhythmPanel extends React.Component{
     return ( 
       <div className = {"panel"}>
           <div className = {"button-container"}>
+          <SpeedChanger faster_g = {this.faster_g} slower_g = {this.slower_g} speedo = {this.state.speedo}></SpeedChanger>
             <button onClick = {this.play_g}>test play</button>
             <button onClick = {this.pause_g}>test pause</button>
             <button onClick = {this.stop_g}>test stop</button>
             <button onClick = {this.clear_g}>test clear</button>
-            <button onClick = {this.faster_g}>test faster</button>
-            <button onClick = {this.slower_g}>test slower</button>
             <button onClick = {this.save_g}>test save</button>
             <button onClick = {this.load_g}>test load</button>
             {this.state.load_s ? <div><input type="file" name="file" onChange={this.onChangeHandler}/> <button onClick = {this.upload_g}>test upload</button> </div> : <div/>}
-            <div>{this.state.speedo}</div>
           </div>
           {
             (RhythmPanel.col_starter).map((v) =>

@@ -1,7 +1,7 @@
 .panel {
     background-color:red;
     display: flex;
-
+    width: 80%;
     height: 30vw;
     /* TODO: testing */
     justify-content: center;
@@ -13,3 +13,4 @@
     display: flex;
     flex-direction: column;
 }
+

@@ -1,0 +1,19 @@
+.speed-changer {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.speed-changer-button {
+    background-color: brown;
+    display: flex;
+    width: 20%;
+    border-radius: 50%;
+    justify-content: center;
+}
+
+.speed-changer-speed {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+}
