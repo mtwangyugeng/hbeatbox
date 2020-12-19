@@ -4,7 +4,7 @@ import './RhythmPanel.css';
 import RhythmColumn from './RhythmColumn';
 import RhythmSquare from './RhythmSquare';
 import SpeedChanger from './SpeedChanger'
-import RhythmVisualizer from './RhythmVisualizer';
+import RhythmVisualizer from './RhythmVisualizer'
 
 class RhythmPanel extends React.Component{
   // CONST
@@ -21,16 +21,43 @@ class RhythmPanel extends React.Component{
     download_s: false,
 
     load_s: false,
-    loadfile_s: false
+    loadfile_s: false,
+
+    audio: null,
   }
   intervals = null;
   isplaying = false;
 
+  async getMicrophone() {
+    const audio = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: false
+    });
+    this.setState({ audio });
+  }
+
+  stopMicrophone() {
+    this.state.audio.getTracks().forEach(track => track.stop());
+    this.setState({ audio: null });
+  }
+
+  toggleMicrophone = () => {
+    if (this.state.audio) {
+      this.stopMicrophone();
+    } else {
+      this.getMicrophone();
+    }
+  }
+
   render() {
     return ( 
       <div >
+       
             <div className = {"button-boss"}>
               <div className = {"button-container"}>
+                <button className = {"panel-buttons"} onClick={this.toggleMicrophone}>
+                  {this.state.audio ? 'Stop microphone' : 'Get microphone input'}
+                </button>
                 <button className = {"panel-buttons"} onClick = {this.play_g}>test play</button>
                 <button className = {"panel-buttons"} onClick = {this.pause_g}>test pause</button>
                 <button className = {"panel-buttons"} onClick = {this.stop_g}>test stop</button>
@@ -41,7 +68,7 @@ class RhythmPanel extends React.Component{
                 <button className = {"panel-buttons"} onClick = {this.load_g}>test load</button>
                 {this.state.load_s ? <div><input type="file" name="file" onChange={this.onChangeHandler}/> <button onClick = {this.upload_g}>test upload</button> </div> : <div/>}
               </div>
-              <RhythmVisualizer></RhythmVisualizer>
+              {this.state.audio ? <RhythmVisualizer audio={this.state.audio} /> : ''}
             </div>
           <div className = {"panel"}>
           {
