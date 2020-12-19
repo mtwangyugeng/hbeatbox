@@ -1,7 +1,6 @@
 import React from 'react'
 import './RhythmVisualizer.css';
 // IMPORTANT!!
-
 export default class RhythmVisualizer extends React.Component{
 
   state = {
@@ -14,17 +13,21 @@ export default class RhythmVisualizer extends React.Component{
     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
     this.analyser = this.audioContext.createAnalyser();
     this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
-    this.source = this.audioContext.createMediaStreamSource(this.props.audio);
-    this.source.connect(this.analyser);
-    // animation frames
+
+    var i;
+    for (i = 0; i < this.props.sounds.length; i++) {
+      let source = this.audioContext.createMediaElementSource(this.props.sounds[i])
+      source.connect(this.audioContext.destination)
+      source.connect(this.analyser)
+    }
     this.rafId = requestAnimationFrame(this.tick);
   }
 
-  componentWillUnmount() {
-    cancelAnimationFrame(this.rafId);
-    this.analyser.disconnect();
-    this.source.disconnect();
-  }
+  // componentWillUnmount() {
+  //   cancelAnimationFrame(this.rafId);
+  //   this.analyser.disconnect();
+  //   this.source.disconnect();
+  // }
 
   tick = () => {
     this.analyser.getByteTimeDomainData(this.dataArray);
@@ -37,13 +40,14 @@ export default class RhythmVisualizer extends React.Component{
     const height = canvas.height;
     const width = canvas.width;
     const context = canvas.getContext('2d');
-    let x = 0;
+    
     const sliceWidth = (width * 1.0) / this.state.audioData.length;
     context.lineWidth = 2;
     context.strokeStyle = '#000000';
     context.clearRect(0, 0, width, height);
     context.beginPath();
     context.moveTo(0, height / 2);
+    let x = 0;
     for (const item of this.state.audioData) {
       const y = (item / 255.0) * height;
       context.lineTo(x, y);

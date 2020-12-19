@@ -6,6 +6,13 @@ import RhythmSquare from './RhythmSquare';
 import SpeedChanger from './SpeedChanger'
 import RhythmVisualizer from './RhythmVisualizer'
 
+import ccc from './sounds/ccc.wav'
+import ccd from './sounds/ccd.wav'
+import cce from './sounds/cce.wav'
+import ccf from './sounds/ccf.wav'
+import ccg from './sounds/ccg.wav'
+import cch from './sounds/cch.wav'
+
 class RhythmPanel extends React.Component{
   // CONST
   static panel_buttons = ["play", "pause", "stop", "faster", "slower"]
@@ -22,32 +29,11 @@ class RhythmPanel extends React.Component{
 
     load_s: false,
     loadfile_s: false,
-
-    audio: null,
   }
   intervals = null;
   isplaying = false;
+  sounds = [new Audio(ccc), new Audio(ccd), new Audio(cce), new Audio(ccf), new Audio(ccg), new Audio(cch)]
 
-  async getMicrophone() {
-    const audio = await navigator.mediaDevices.getUserMedia({
-      audio: true,
-      video: false
-    });
-    this.setState({ audio });
-  }
-
-  stopMicrophone() {
-    this.state.audio.getTracks().forEach(track => track.stop());
-    this.setState({ audio: null });
-  }
-
-  toggleMicrophone = () => {
-    if (this.state.audio) {
-      this.stopMicrophone();
-    } else {
-      this.getMicrophone();
-    }
-  }
 
   render() {
     return ( 
@@ -55,9 +41,6 @@ class RhythmPanel extends React.Component{
        
             <div className = {"button-boss"}>
               <div className = {"button-container"}>
-                <button className = {"panel-buttons"} onClick={this.toggleMicrophone}>
-                  {this.state.audio ? 'Stop microphone' : 'Get microphone input'}
-                </button>
                 <button className = {"panel-buttons"} onClick = {this.play_g}>test play</button>
                 <button className = {"panel-buttons"} onClick = {this.pause_g}>test pause</button>
                 <button className = {"panel-buttons"} onClick = {this.stop_g}>test stop</button>
@@ -68,7 +51,7 @@ class RhythmPanel extends React.Component{
                 <button className = {"panel-buttons"} onClick = {this.load_g}>test load</button>
                 {this.state.load_s ? <div><input type="file" name="file" onChange={this.onChangeHandler}/> <button onClick = {this.upload_g}>test upload</button> </div> : <div/>}
               </div>
-              {this.state.audio ? <RhythmVisualizer audio={this.state.audio} /> : ''}
+              { <RhythmVisualizer sounds = {this.sounds} />}
             </div>
           <div className = {"panel"}>
           {
@@ -80,6 +63,7 @@ class RhythmPanel extends React.Component{
                   save_s = {this.state.save_s}
                   download_s = {this.state.download_s}
                   loadfile_s = {this.state.loadfile_s}
+                  sounds = {this.sounds}
                 ></RhythmColumn>
             )
           }
