@@ -14,6 +14,7 @@ ReactDOM.render(
       sounds = {[new Audio(ccc), new Audio(ccd), new Audio(cce), new Audio(ccf), new Audio(ccg), new Audio(cch)]}
     ></RhythmColumn> */}
     <RhythmPanel></RhythmPanel>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );

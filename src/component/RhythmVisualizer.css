@@ -1,5 +1,5 @@
 .visual-box {
-    background-color: brown;
-    height: 100%;
-    width: 50%;
+    background-color: black;
+    width: 50%; 
+    border-radius: 20%;
 }

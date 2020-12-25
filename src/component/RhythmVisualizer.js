@@ -54,6 +54,7 @@ export default class RhythmVisualizer extends React.Component{
       x += sliceWidth;
     }
     context.lineTo(x, height / 2);
+    context.strokeStyle = '#5bd9fc';
     context.stroke();
   }
 
