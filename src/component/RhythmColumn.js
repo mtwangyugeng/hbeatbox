@@ -28,7 +28,8 @@ class RhythmColumn extends React.Component{
                 loadfile_s = {this.props.loadfile_s}></RhythmSquare>
             )
           }
-          <div className = {"testcol"} onClick = {this.updateState}>{this.props.act_col}</div>
+          {/* {this.props.act_col} */}
+          <div className = {"testcol"} onClick = {this.updateState}></div>
       </div >
     );
   }

@@ -29,8 +29,8 @@ export default class RhythmSquare extends React.Component{
     <div className = {RhythmSquare.cssStates[this.state.activated] + " allbuttons"} 
         onClick = {this.updateButton}>
         {/* testing */}
-        {this.state.activated}
-        {this.props.activated}
+        {/* {this.state.activated}
+        {this.props.activated} */}
         {/* testing */}
         {this.player()}
         {this.cleaner()}

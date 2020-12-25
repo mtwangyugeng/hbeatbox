@@ -2,13 +2,16 @@
     display: flex;
     background-color:yellow;
     height: 40vw;
+    min-height: 40vmax;
     width: 60%;
+    min-width: 60vmax;
     margin: auto;
     border-style: solid;
     flex-direction: column;
 }
 
 /* parent: panel-master */
+/* actrually panel columns */
 .panel {
     /* background-color:red; */
     display: flex;
