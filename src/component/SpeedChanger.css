@@ -1,9 +1,11 @@
 .speed-changer {
+    /* background-color: brown; */
     display: flex;
     flex-direction: row;
     width: fit-content;
     height: fit-content;
-    align-self: center;
+    /* align-self: center;
+    border-radius: 20%; */
 }
 
 .speed-changer-button {
@@ -12,6 +14,7 @@
     width: 20%;
     border-radius: 50%;
     justify-content: center;
+    cursor:pointer;
 }
 
 .speed-changer-speed {

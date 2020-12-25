@@ -3,10 +3,12 @@
     height: 12%;
     width: 90% ;
     border-radius: 20%;
+    margin:0.1vw;
 }
 
 .allbuttons:hover {
   filter: brightness(150%);
+  cursor:pointer;
 }
 
 .rest {
@@ -15,5 +17,5 @@
 
 
 .activated {
-  background-color: green;
+  background-color: black;
 }

@@ -1,6 +1,6 @@
 .panel-master {
     display: flex;
-    background-color:yellow;
+    background-color:aliceblue;
     height: 40vw;
     min-height: 40vmax;
     width: 60%;
@@ -11,7 +11,7 @@
 }
 
 /* parent: panel-master */
-/* actrually panel columns */
+/* actrually parent for panel columns */
 .panel {
     /* background-color:red; */
     display: flex;
@@ -20,24 +20,44 @@
     /* TODO: testing */
     /* justify-content: center; */
     align-self: center;
-
+    justify-content:space-evenly;
 }
 
-/*  */
+/* column */
 .button-container{
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 50%;
+    justify-content:space-evenly;
+    flex-wrap:wrap;
 }
 
 .panel-buttons {
     display: flex;
-    height: 33%;
+    height: 30%;
     border-radius: 20%;
+    background-color: white;
+    color: black;
+    width: 48%;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 2vw;
 }
+.panel-buttons:hover {
+    cursor:pointer;
+    background-color: black;
+    color: white;
+}
+.panel-buttons:active {
+    cursor:pointer;
+    background-color: white;
+    color: black;
+}
+
 
 .button-boss {
     display: flex;
-    background-color:yellow;
+    background-color:gray;
     height: 50%;
 }

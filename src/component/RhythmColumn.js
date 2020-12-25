@@ -29,7 +29,7 @@ class RhythmColumn extends React.Component{
             )
           }
           {/* {this.props.act_col} */}
-          <div className = {"testcol"} onClick = {this.updateState}></div>
+          <div className = {"testcol"} onClick = {this.updateState}>☊</div>
       </div >
     );
   }
