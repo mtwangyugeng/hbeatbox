@@ -60,6 +60,8 @@ export default class RhythmVisualizer extends React.Component{
 
   componentDidUpdate() {
     this.draw();
+    // TODO: HOT FIX for chrome
+    this.audioContext.resume();
   }
 
   render() {
