@@ -66,6 +66,7 @@ class RhythmPanel extends React.Component{
                     download_s = {this.state.download_s}
                     loadfile_s = {this.state.loadfile_s}
                     sounds = {this.sounds}
+                    speedo = {this.state.speedo}
                   ></RhythmColumn>
               )
             }

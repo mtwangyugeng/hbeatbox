@@ -21,25 +21,34 @@ class RhythmColumn extends React.Component{
   render() {
     return ( 
       <div className = {"allcol " + RhythmColumn.cssstates[this.state.activated || (this.props.act_col === this.props.colnum)?1:0]}>
-          {
-            this.props.sounds.map((v, i) =>
-              <RhythmSquare colnum = {this.props.colnum} rownum = {i} activated= {this.state.activated || (this.props.act_col === this.props.colnum)?1:0 } sound = {v} clear = {this.props.clear} save_s = {this.props.save_s} 
-                download_s = {this.props.download_s}
-                loadfile_s = {this.props.loadfile_s}></RhythmSquare>
-            )
-          }
-          {/* {this.props.act_col} */}
-          <div className = {"testcol"} onClick = {this.updateState}>☊</div>
+        <div className = {"alllight " + "light-" + RhythmColumn.cssstates[this.state.activated || (this.props.act_col === this.props.colnum)?1:0]}>☄</div>
+        {
+          this.props.sounds.map((v, i) =>
+            <RhythmSquare colnum = {this.props.colnum} rownum = {i} activated= {this.state.activated || (this.props.act_col === this.props.colnum)?1:0 } sound = {v} clear = {this.props.clear} save_s = {this.props.save_s} 
+              download_s = {this.props.download_s}
+              loadfile_s = {this.props.loadfile_s}></RhythmSquare>
+          )
+        }
+        {/* {this.props.act_col} */}
+        <div className = {"testcol"} onClick = {this.actState}>☊</div>
       </div >
     );
   }
-
-
-  updateState = () => {
+  actState = () => {
     this.setState({
-      activated: this.state.activated ^ 1
+      activated: 1
     })
   }
+
+  componentDidUpdate(){
+    if(this.state.activated){
+      setTimeout(() => {
+      this.setState({
+        activated: 0
+      })}, this.props.speedo)
+    }
+  }
+
 }
 
 export default RhythmColumn;

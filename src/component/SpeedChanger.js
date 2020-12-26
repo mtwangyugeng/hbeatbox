@@ -13,9 +13,9 @@ export default class SpeedChanger extends React.Component{
     render() {
         return ( 
             <div className = "speed-changer">
-                <button className = "speed-changer-button" onClick = {this.faster_g}>+</button>
+                <div className = "speed-changer-button" onClick = {this.faster_g}>+</div>
                 <div className = "speed-changer-speed">{this.props.speedo + " ms"}</div>
-                <button className = "speed-changer-button" onClick = {this.slower_g}>-</button>
+                <div className = "speed-changer-button" onClick = {this.slower_g}>-</div>
             </div>
         );
     }

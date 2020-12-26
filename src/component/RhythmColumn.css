@@ -29,13 +29,32 @@
 }
 
 .testcol:active{
-    background-color: white;
+    background-color: rgb(245, 87, 245);
+    color: #5bd9fc;
 }
 
 .colrest{
-    background-color: rgb(98, 98, 126);
+    background-color: rgb(201, 201, 250);
 }
 
 .colact{
-    background-color: rgb(41, 13, 13);
+    background-color: rgb(129, 103, 103);
+} 
+
+.alllight{
+    border-radius: 50%;
+    height: 8%;
+    width: 60%;
+    text-align: center;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2vmin;
+}
+.light-colrest{
+    background-color: #5bd9fc;
+}
+.light-colact{
+    background-color: rgb(245, 87, 245);
 }
