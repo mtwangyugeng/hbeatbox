@@ -1,0 +1,28 @@
+.the-bar{
+    width : 100%;
+    height: 5vmin;
+    background-color: lightblue;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.icons{
+    height: 100%;
+    cursor:pointer;
+}
+.icons:hover{
+    opacity: 0.5;
+}
+
+.linkedin {
+    background: url(LI-In-Bug.png);
+    background-size: 100% 100%;
+    width: 6vmin;
+}
+
+.github {
+    background: url(GitHub-Mark-120px-plus.png);
+    background-size: 100% 100%;
+    width: 5vmin;
+}
