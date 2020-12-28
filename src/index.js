@@ -16,7 +16,7 @@ ReactDOM.render(
     ></RhythmColumn> */}
     <ConnectionBar></ConnectionBar>
     <RhythmPanel></RhythmPanel>
-    
+    <div className = "footer">Copyright (c) 2020 Simon</div>
   </React.StrictMode>,
   document.getElementById('root')
 );
