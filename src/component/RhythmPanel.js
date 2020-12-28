@@ -54,7 +54,6 @@ class RhythmPanel extends React.Component{
                   <div className = {"panel-buttons"} onClick = {this.clear_g}>test clear</div>
                   <div className = {"panel-buttons"} onClick = {this.save_g}>test save</div>
                   <div className = {"panel-buttons"} onClick = {this.load_g}>test load</div>
-                  {this.state.load_s ? <div><input type="file" name="file" onChange={this.onChangeHandler}/> <button onClick = {this.upload_g}>test upload</button> </div> : <div/>}
                 </div> 
               }
               { <RhythmVisualizer sounds = {this.sounds} />}
