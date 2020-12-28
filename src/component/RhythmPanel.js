@@ -163,8 +163,10 @@ class RhythmPanel extends React.Component{
   }
 
   play_g = () => {
-    this.intervals = setInterval(this.play_col_test,this.state.speedo)
-    this.isplaying = true;
+    if (!this.isplaying){
+      this.intervals = setInterval(this.play_col_test,this.state.speedo)
+      this.isplaying = true;
+    }
   }
   pause_g = () => {
     clearInterval(this.intervals)
